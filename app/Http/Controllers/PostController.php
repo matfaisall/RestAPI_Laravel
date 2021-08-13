@@ -15,7 +15,11 @@ class PostController extends Controller
 
     public function show($id) {
         $data = Post::find($id);
-
+        if (is_null($data)) {
+            return response()->json([
+                'message' => 'resource not found'
+            ], 404);
+        }
         return response()->json($data, 200);
     }
 
