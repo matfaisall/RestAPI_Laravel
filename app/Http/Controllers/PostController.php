@@ -22,7 +22,19 @@ class PostController extends Controller
     public function store(Request $request) {
 
         $data = $request->all();
-        Post::create($data);
-        return response()->json('success', 201);
+        $response = Post::create($data);
+        return response()->json($response, 201);
+    }
+
+    public function update(Request $request, Post $post) {
+
+        $post->update($request->all());
+        return response()->json($post, 200);
+    }
+
+    public function destroy(Post $post){
+        $post->delete();
+
+        return response()->json('Data terhapus', 200);
     }
 }
