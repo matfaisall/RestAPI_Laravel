@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Post;
+namespace App\Http\Resources\User;
 
-use App\Http\Resources\User\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +16,8 @@ class PostResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'body' => $this->body,
-            'stored_at'=> $this->created_at->diffForHumans(),
-            'user' => new UserResource($this->user)
+            'email' => $this->email,
+            
         ];
     }
 }
